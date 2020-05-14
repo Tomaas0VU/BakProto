@@ -13,10 +13,10 @@ namespace TempDevice
         {
             MyMqttClient mqttClient = new MyMqttClient();
 
-            var pnvDevice = new Device(mqttClient, _serialNoPnv);
+            var pnvDevice = new Device(mqttClient, _serialNoPnv, "TempDevicePanv");
             Task.Run(pnvDevice.StartWorkAsync);
 
-            var vlnDevice = new Device(mqttClient, _serialNoVln);
+            var vlnDevice = new Device(mqttClient, _serialNoVln, "TempDeviceViln");
             Task.Run(vlnDevice.StartWorkAsync);
         }
     }

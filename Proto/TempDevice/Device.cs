@@ -17,10 +17,12 @@ namespace TempDevice
         private MyMqttClient _mqttClient;
         private WeatherApiClient _weatherClient;
         private string _serialNo;
+        private string _deviceName;
 
-        public Device(MyMqttClient mqttClient, string serialNo)
+        public Device(MyMqttClient mqttClient, string serialNo, string deviceName)
         {
             _serialNo = serialNo;
+            _deviceName = deviceName;
             _mqttClient = mqttClient;
             _weatherClient = new WeatherApiClient();
         }
@@ -34,6 +36,7 @@ namespace TempDevice
                 var mes = new Message
                 {
                     SerialNo = _serialNo,
+                    DeviceName = _deviceName,
                     Timestamp = DateTime.Now,
                     Value = temp
                 };
