@@ -12,6 +12,13 @@
   <ItemGroup>
     <ProjectReference Include="..\Models\Models.csproj" />
     <ProjectReference Include="..\MyMqtt\MyMqtt.csproj" />
+    <ProjectReference Include="..\WeatherApi\WeatherApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="city.list.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

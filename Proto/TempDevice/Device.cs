@@ -3,14 +3,14 @@ using MyMqtt;
 using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
-using TempDevice.WeatherApi;
+using WeatherApi;
 
 namespace TempDevice
 {
     public class Device
     {
         // Params
-        public static int _interval = 300000;
+        public static int _interval = 600000;
         const string _devicePublishTopic = "data/temperature";
 
         // Vars

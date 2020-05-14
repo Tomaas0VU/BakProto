@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MqttSubscriber", "MqttSubscriber\MqttSubscriber.csproj", "{BA0C4C81-27CB-4040-B02F-6E4682CA1F29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMqtt", "MyMqtt\MyMqtt.csproj", "{00342AE0-CC3C-415C-ABC9-372DA73B0E2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMqtt", "MyMqtt\MyMqtt.csproj", "{00342AE0-CC3C-415C-ABC9-372DA73B0E2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApi", "WeatherApi\WeatherApi.csproj", "{F5021F4C-54D7-4342-89D9-01BD5B92611C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{00342AE0-CC3C-415C-ABC9-372DA73B0E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00342AE0-CC3C-415C-ABC9-372DA73B0E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00342AE0-CC3C-415C-ABC9-372DA73B0E2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5021F4C-54D7-4342-89D9-01BD5B92611C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5021F4C-54D7-4342-89D9-01BD5B92611C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5021F4C-54D7-4342-89D9-01BD5B92611C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5021F4C-54D7-4342-89D9-01BD5B92611C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
