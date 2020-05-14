@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TempDevice", "TempDevice\TempDevice.csproj", "{CCA8E717-BCAF-42AF-A982-89D40B79202F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TempDevice", "TempDevice\TempDevice.csproj", "{CCA8E717-BCAF-42AF-A982-89D40B79202F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{066D85B6-DD0D-4944-9AE6-0D8055F7676F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{066D85B6-DD0D-4944-9AE6-0D8055F7676F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MqttSubscriber", "MqttSubscriber\MqttSubscriber.csproj", "{BA0C4C81-27CB-4040-B02F-6E4682CA1F29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MqttSubscriber", "MqttSubscriber\MqttSubscriber.csproj", "{BA0C4C81-27CB-4040-B02F-6E4682CA1F29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMqtt", "MyMqtt\MyMqtt.csproj", "{00342AE0-CC3C-415C-ABC9-372DA73B0E2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{BA0C4C81-27CB-4040-B02F-6E4682CA1F29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA0C4C81-27CB-4040-B02F-6E4682CA1F29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA0C4C81-27CB-4040-B02F-6E4682CA1F29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00342AE0-CC3C-415C-ABC9-372DA73B0E2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00342AE0-CC3C-415C-ABC9-372DA73B0E2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00342AE0-CC3C-415C-ABC9-372DA73B0E2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00342AE0-CC3C-415C-ABC9-372DA73B0E2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

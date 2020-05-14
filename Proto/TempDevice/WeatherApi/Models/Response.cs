@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TempDevice.WeatherApi.Models
+﻿namespace TempDevice.WeatherApi.Models
 {
 
     public class WeatherResponse

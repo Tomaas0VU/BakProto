@@ -1,25 +1,29 @@
-﻿using System.IO;
+﻿using Newtonsoft.Json;
+using System.IO;
 using System.Net;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
 using TempDevice.WeatherApi.Models;
 
 namespace TempDevice.WeatherApi
 {
     public class WeatherApiClient
     {
-        private string ApiUrl { get; set; }
+        const string appid = "1b4825408776f438641499767a4a148d";
+        const string url = "http://api.openweathermap.org/data/2.5/weather?id=[CityId]&appid=[ApiKey]";
 
-        public WeatherApiClient(string url)
+        public static string ApiUrl { get { return url.Replace("[ApiKey]", appid); } }
+
+        public WeatherApiClient()
         {
-            ApiUrl = url;
+
         }
 
-        public double GetTemperatureFromApi(string location)
+        public async Task<double> GetTemperatureFromApiAsync(string cityId)
         {
-            string url = ApiUrl.Replace("[CityId]", location);
+            string url = ApiUrl.Replace("[CityId]", cityId);
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (HttpWebResponse response = (HttpWebResponse) await request.GetResponseAsync())
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
             {
