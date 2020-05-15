@@ -7,6 +7,8 @@ namespace TempDevice
 {
     class Program
     {
+        const string _preDeviceName = "TempDevice";
+
         static void Main(string[] args)
         {
             MyMqttClient mqttClient = new MyMqttClient();
@@ -15,7 +17,7 @@ namespace TempDevice
             generator.LoadFile().Wait();
             foreach (City city in generator.GetAllLithuanianCities())
             {
-                var device = new Device(mqttClient, city.id.ToString(), "TempDevice" + city.name.ToString());
+                var device = new Device(mqttClient, city.id.ToString(), _preDeviceName + city.name.ToString());
                 Task.Run(device.StartWorkAsync);
             }
         }
