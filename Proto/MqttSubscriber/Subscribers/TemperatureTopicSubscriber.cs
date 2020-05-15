@@ -23,6 +23,7 @@ namespace MqttSubscriber.Subscribers
         public async Task SubscribeAsync()
         {
             IDatabase mongo = new MongoDBClient();
+            IDatabase riak = new RiakTSClient();
 
             var mqttClient = MqttClient.CreateAsync(_hostname).Result;
             var sess = mqttClient.ConnectAsync().Result;
@@ -34,8 +35,8 @@ namespace MqttSubscriber.Subscribers
 
                 Message messageObject = JsonConvert.DeserializeObject<Message>(msgString);
 
-                // TODO: Now should upload to Databases
                 mongo.InsertTemperatureReadingToDatabase(messageObject);
+                riak.InsertTemperatureReadingToDatabase(messageObject);
             });
         }
     }
