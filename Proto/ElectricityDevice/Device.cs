@@ -55,7 +55,18 @@ namespace ElectricityDevice
 
         private double GenerateElectricityIncrease()
         {
-            throw new NotImplementedException();
+            var morningTimespan = new TimeSpan(8, 0, 0);
+            var eveningTimespan = new TimeSpan(22, 0, 0);
+
+            var time = DateTime.Now.TimeOfDay;
+            if ((time >= morningTimespan) && (time < eveningTimespan))
+            {
+                return Helpers.GetRandomNumber(10, 30);
+            }
+            else
+            {
+                return Helpers.GetRandomNumber(3, 15);
+            }
         }
 
         private void GetCounterData()
