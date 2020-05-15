@@ -1,4 +1,6 @@
-﻿using Models;
+﻿using ElectricityDevice.Counter.Interfaces;
+using ElectricityDevice.Counter.MongoDB;
+using Models;
 using MyMqtt;
 using Newtonsoft.Json;
 using System;
@@ -11,9 +13,11 @@ namespace ElectricityDevice
         // Params
         public static int _interval = 600000;
         const string _devicePublishTopic = "data/electricity";
+        const string _deviceCounterFileFormat = ".txt";
 
         // Vars
         private MyMqttClient _mqttClient;
+        private ICanStoreCounter _counterStore;
         private string _serialNo;
         private string _deviceName;
 
@@ -24,8 +28,9 @@ namespace ElectricityDevice
             _serialNo = serialNo;
             _deviceName = deviceName;
             _mqttClient = mqttClient;
+            _counterStore = new MongoDBCounter();
 
-            GetCounterData();
+            _counter = _counterStore.GetCounterForDevice(_serialNo).Result;
         }
 
         public async Task StartWorkAsync()
@@ -35,7 +40,7 @@ namespace ElectricityDevice
                 double electricityIncrease = GenerateElectricityIncrease();
 
                 IncreaseCounter(electricityIncrease);
-                SetCounterData();
+                await _counterStore.StoreCounterForDevice(_serialNo, _counter);
 
                 var mes = new Message
                 {
@@ -67,16 +72,6 @@ namespace ElectricityDevice
             {
                 return Helpers.GetRandomNumber(3, 15);
             }
-        }
-
-        private void GetCounterData()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void SetCounterData()
-        {
-            throw new NotImplementedException();
         }
 
         private void IncreaseCounter(double increase)

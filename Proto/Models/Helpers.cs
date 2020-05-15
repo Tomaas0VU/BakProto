@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Models
 {
@@ -9,7 +7,8 @@ namespace Models
         public static double GetRandomNumber(double minimum, double maximum)
         {
             Random random = new Random();
-            return random.NextDouble() * (maximum - minimum) + minimum;
+            double number = random.NextDouble() * (maximum - minimum) + minimum;
+            return Math.Round(number, 3);
         }
     }
 }

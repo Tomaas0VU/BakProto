@@ -6,7 +6,7 @@ namespace MqttSubscriber.Database
 {
     public class MongoDBClient : IDatabase
     {
-        private string connectionString = "mongodb://localhost:27017";
+        private const string connectionString = "mongodb://localhost:27017";
 
         public void InsertTemperatureReadingToDatabase(Message message)
         {
