@@ -15,5 +15,10 @@ namespace MqttSubscriber.Database
             IRiakEndPoint cluster = RiakCluster.FromConfig("riakConfig");
             IRiakClient client = cluster.CreateClient();
         }
+
+        public void InsertElectricityReadingToDatabase(Message message)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
