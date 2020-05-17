@@ -2,10 +2,10 @@ CREATE TABLE Electricity
 (
   SerialNo     VARCHAR   NOT NULL,
   DeviceName   VARCHAR,
-  Timestamp    TIMESTAMP NOT NULL,
+  Time         TIMESTAMP NOT NULL,
   Value        DOUBLE    NOT NULL,
   PRIMARY KEY (
-    (SerialNo, QUANTUM(Timestamp, 1, 'd')),
-    SerialNo, Timestamp DESC
+    (SerialNo, QUANTUM(Time, 1, 'd')),
+    SerialNo, Time DESC
   )
 );
