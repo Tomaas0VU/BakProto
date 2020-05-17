@@ -1,7 +1,6 @@
 ﻿using Models;
 using MqttSubscriber.Database.Interfaces;
 using System;
-using RiakClient;
 
 namespace MqttSubscriber.Database
 {
@@ -11,9 +10,7 @@ namespace MqttSubscriber.Database
 
         public void InsertTemperatureReadingToDatabase(Message message)
         {
-            const string contributors = "contributors";
-            IRiakEndPoint cluster = RiakCluster.FromConfig("riakConfig");
-            IRiakClient client = cluster.CreateClient();
+            throw new NotImplementedException();
         }
 
         public void InsertElectricityReadingToDatabase(Message message)
