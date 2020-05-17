@@ -1,28 +1,28 @@
-﻿using Models;
-using MqttSubscriber.Database;
-using MqttSubscriber.Database.Interfaces;
-using MqttSubscriber.Subscribers.Interfaces;
+﻿using MqttSubscriber.NET.Database;
+using MqttSubscriber.NET.Database.Interfaces;
+using MqttSubscriber.NET.Models;
+using MqttSubscriber.NET.Subscribers.Interfaces;
 using Newtonsoft.Json;
 using System;
 using System.Net.Mqtt;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MqttSubscriber.Subscribers
+namespace MqttSubscriber.NET.Subscribers
 {
-    public class TemperatureTopicSubscriber : ITopicSubscriber
+    public class ElectricityTopicSubscriber : ITopicSubscriber
     {
         private string _hostname;
-        private string _topic = "data/temperature";
+        private string _topic = "data/electricity";
 
-        public TemperatureTopicSubscriber(string hostname)
+        public ElectricityTopicSubscriber(string hostname)
         {
             _hostname = hostname;
         }
 
         public async Task SubscribeAsync()
         {
-            IDatabase mongo = new MongoDBClient();
+            IDatabase riak = new RiakTSClient();
 
             var mqttClient = MqttClient.CreateAsync(_hostname).Result;
             var sess = mqttClient.ConnectAsync().Result;
@@ -34,7 +34,7 @@ namespace MqttSubscriber.Subscribers
 
                 Message messageObject = JsonConvert.DeserializeObject<Message>(msgString);
 
-                mongo.InsertTemperatureReadingToDatabase(messageObject);
+                riak.InsertElectricityReadingToDatabase(messageObject);
             });
         }
     }
