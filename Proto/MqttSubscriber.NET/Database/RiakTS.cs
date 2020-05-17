@@ -15,7 +15,7 @@ namespace MqttSubscriber.NET.Database
 
         public void InsertElectricityReadingToDatabase(Message message)
         {
-            string table = "Temperature";
+            string table = "Electricity";
             InsertMessageIntoDatabase(table, message);
         }
 

@@ -14,8 +14,8 @@ namespace MqttSubscriber.NET
             ITopicSubscriber temperatureSubscriber = new TemperatureTopicSubscriber(_hostname);
             Task.Run(temperatureSubscriber.SubscribeAsync);
 
-            //ITopicSubscriber electricitySubscriber = new ElectricityTopicSubscriber(_hostname);
-            //Task.Run(electricitySubscriber.SubscribeAsync);
+            ITopicSubscriber electricitySubscriber = new ElectricityTopicSubscriber(_hostname);
+            Task.Run(electricitySubscriber.SubscribeAsync);
 
             Console.ReadKey();
         }
