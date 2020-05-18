@@ -2,6 +2,7 @@
 using MqttSubscriber.NET.Database.Interfaces;
 using RiakClient;
 using RiakClient.Commands.TS;
+using System;
 
 namespace MqttSubscriber.NET.Database
 {
@@ -52,6 +53,11 @@ namespace MqttSubscriber.NET.Database
                     .Build();
 
             RiakResult rslt = client.Execute(cmd);
+
+            if (!rslt.IsSuccess)
+            {
+                throw new Exception("Connection to Riak was not successful.");
+            }
         }
     }
 }
