@@ -48,7 +48,7 @@ namespace DataReplicator
             dataOut.InsertData("Temperature", list).Wait();
         }
 
-        private static List<Message> TransformData(List<Message> data, int howManyDaysBack)
+        private static List<Message> TransformData(List<MessageFromMongo> data, int howManyDaysBack)
         {
             return data.Select(x => new Message {
                 SerialNo = x.SerialNo,

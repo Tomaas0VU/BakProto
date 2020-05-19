@@ -7,6 +7,6 @@ namespace DataReplicator.DatabaseIn.Interfaces
 {
     public interface ICanRead
     {
-        Task<List<Message>> GetData(string collectionName, DateTime from, DateTime to);
+        Task<List<MessageFromMongo>> GetData(string collectionName, DateTime from, DateTime to);
     }
 }

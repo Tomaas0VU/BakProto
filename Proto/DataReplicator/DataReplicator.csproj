@@ -123,6 +123,7 @@
     <Compile Include="DatabaseOut\MongoOut.cs" />
     <Compile Include="DatabaseOut\RiakOut.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\MessageFromMongo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

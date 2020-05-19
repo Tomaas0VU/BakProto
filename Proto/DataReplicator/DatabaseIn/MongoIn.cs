@@ -14,14 +14,14 @@ namespace DataReplicator.DatabaseIn
         {
             _connectionString = connectionString;
         }
-        public async Task<List<Message>> GetData(string collectionName, DateTime from, DateTime to)
+        public async Task<List<MessageFromMongo>> GetData(string collectionName, DateTime from, DateTime to)
         {
             var client = new MongoClient(_connectionString);
             var db = client.GetDatabase("Bakalaurinis");
-            var collection = db.GetCollection<Message>(collectionName);
-            var result = await collection.Find(Builders<Message>.Filter.And(
-                Builders<Message>.Filter.Gte("Timestamp", from),
-                Builders<Message>.Filter.Lt("Timestamp", to)
+            var collection = db.GetCollection<MessageFromMongo>(collectionName);
+            var result = await collection.Find(Builders<MessageFromMongo>.Filter.And(
+                Builders<MessageFromMongo>.Filter.Gte("Timestamp", from),
+                Builders<MessageFromMongo>.Filter.Lt("Timestamp", to)
                 )).ToListAsync();
 
             return result;
