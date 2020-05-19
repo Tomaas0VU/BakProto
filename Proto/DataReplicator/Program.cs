@@ -19,9 +19,11 @@ namespace DataReplicator
             string connectionStringMongo = "mongodb://192.168.1.105:27017";
 
             string pasteDBLocation = "mongo";
-            DateTime startDate = new DateTime(2020, 5, 17);
+            DateTime startDate = new DateTime(2020, 5, 15);
             TimeSpan startTime = new TimeSpan(0,0,0);
-            TimeSpan duration = new TimeSpan(168, 0, 0);
+            TimeSpan duration = new TimeSpan(8, 0, 0);
+
+            int howManyDaysBack = -4;
 
             // CODE
 
@@ -31,7 +33,7 @@ namespace DataReplicator
             ICanRead mongoIn = new MongoIn(connectionStringMongo);
             var data = mongoIn.GetData("Temperature", from, to).Result;
 
-            // var list = TransformData(data);
+            var list = TransformData(data, howManyDaysBack);
             
             ICanStore dataOut = null;
             if (pasteDBLocation.Equals("mongo"))
@@ -43,7 +45,18 @@ namespace DataReplicator
                 dataOut = new RiakOut();
             }
 
-            dataOut.InsertData("Temperature", data).Wait();
+            dataOut.InsertData("Temperature", list).Wait();
         }
+
+        private static List<Message> TransformData(List<Message> data, int howManyDaysBack)
+        {
+            return data.Select(x => new Message {
+                SerialNo = x.SerialNo,
+                DeviceName = x.DeviceName,
+                Timestamp = x.Timestamp.AddDays(-1 * howManyDaysBack),
+                Value = x.Value
+            }).ToList();
+        }
+
     }
 }
