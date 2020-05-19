@@ -17,7 +17,6 @@ namespace DataReplicator
         {
             // PARAMS
             string connectionStringMongo = "mongodb://192.168.1.105:27017";
-            string connectionStringRiak = "";
 
             string pasteDBLocation = "mongo";
             DateTime startDate = new DateTime(2020, 5, 17);
@@ -33,8 +32,16 @@ namespace DataReplicator
             var data = mongoIn.GetData("Temperature", from, to).Result;
 
             // var list = TransformData(data);
-
-            ICanStore dataOut = new MongoOut(connectionStringMongo);
+            
+            ICanStore dataOut = null;
+            if (pasteDBLocation.Equals("mongo"))
+            {
+                dataOut = new MongoOut(connectionStringMongo);
+            }
+            else if (pasteDBLocation.Equals("riak"))
+            {
+                dataOut = new RiakOut();
+            }
 
             dataOut.InsertData("Temperature", data).Wait();
         }
