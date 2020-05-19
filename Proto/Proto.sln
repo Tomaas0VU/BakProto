@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectricityDevice", "Electr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MqttSubscriber.NET", "MqttSubscriber.NET\MqttSubscriber.NET.csproj", "{B1EEBF8F-2062-473F-82CC-1DB8152F66FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataReplicator", "DataReplicator\DataReplicator.csproj", "{1B880077-6CD2-4752-B35B-4A5BD46A62EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{B1EEBF8F-2062-473F-82CC-1DB8152F66FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1EEBF8F-2062-473F-82CC-1DB8152F66FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1EEBF8F-2062-473F-82CC-1DB8152F66FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B880077-6CD2-4752-B35B-4A5BD46A62EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B880077-6CD2-4752-B35B-4A5BD46A62EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B880077-6CD2-4752-B35B-4A5BD46A62EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B880077-6CD2-4752-B35B-4A5BD46A62EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
