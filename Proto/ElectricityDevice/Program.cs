@@ -1,4 +1,5 @@
 ﻿using MyMqtt;
+using System;
 using System.Threading.Tasks;
 
 namespace ElectricityDevice
@@ -11,11 +12,16 @@ namespace ElectricityDevice
         {
             MyMqttClient mqttClient = new MyMqttClient();
 
-            for (int i = 11110; i < 11610; i += 5)
+            int howManyDevices = 10000;
+            int goingToYear = 2011;
+            int goingToMonth = 1;
+            int goingToDay = 1;
+
+            for (int i = 11110; i < 11110 + howManyDevices; i++)
             {
                 string id = i.ToString();
                 var device = new Device(mqttClient, id, _preDeviceName + id);
-                Task.Run(device.StartWorkAsync);
+                Task.Run(() => device.StartWorkAsync(new DateTime(goingToYear, goingToMonth, goingToDay)));
             }
         }
     }

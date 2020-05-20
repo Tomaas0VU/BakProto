@@ -1,10 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using ElectricityDevice.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace ElectricityDevice.Counter.Interfaces
 {
     public interface ICanStoreCounter
     {
-        Task StoreCounterForDevice(string serialNo, double counter);
-        Task<double> GetCounterForDevice(string serialNo);
+        Task StoreConfigForDevice(string serialNo, DateTime time, double counter);
+        Task<ElectricityDeviceConfig> GetConfigForDevice(string serialNo);
     }
 }

@@ -11,9 +11,8 @@ namespace ElectricityDevice
     public class Device
     {
         // Params
-        public static int _interval = 600000;
+        public static int _interval = 900000;
         const string _devicePublishTopic = "data/electricity";
-        const string _deviceCounterFileFormat = ".txt";
 
         // Vars
         private MyMqttClient _mqttClient;
@@ -22,6 +21,7 @@ namespace ElectricityDevice
         private string _deviceName;
 
         private double _counter;
+        private DateTime _time;
 
         public Device(MyMqttClient mqttClient, string serialNo, string deviceName)
         {
@@ -30,31 +30,33 @@ namespace ElectricityDevice
             _mqttClient = mqttClient;
             _counterStore = new MongoDBCounter();
 
-            _counter = _counterStore.GetCounterForDevice(_serialNo).Result;
+            var config = _counterStore.GetConfigForDevice(_serialNo).Result;
+            _counter = config.Value;
+            _time = config.Time;
         }
 
-        public async Task StartWorkAsync()
+        public async Task StartWorkAsync(DateTime endDate)
         {
-            while (true)
+            while (_time < endDate)
             {
                 double electricityIncrease = GenerateElectricityIncrease();
+                int timeIncrease = GenerateTimeIncrease();
 
                 IncreaseCounter(electricityIncrease);
-                await _counterStore.StoreCounterForDevice(_serialNo, _counter);
+                IncreaseTime(timeIncrease);
+                await _counterStore.StoreConfigForDevice(_serialNo, _time, _counter);
 
                 var mes = new Message
                 {
                     SerialNo = _serialNo,
                     DeviceName = _deviceName,
-                    Timestamp = DateTime.Now,
+                    Timestamp = _time,
                     Value = _counter
                 };
 
                 var mesToSend = JsonConvert.SerializeObject(mes);
 
                 await _mqttClient.PublishAsync(_devicePublishTopic, mesToSend);
-
-                System.Threading.Thread.Sleep(_interval);
             }
         }
 
@@ -74,9 +76,19 @@ namespace ElectricityDevice
             }
         }
 
+        private int GenerateTimeIncrease()
+        {
+            return Helpers.GetRandomInteger(_interval - 120000, _interval + 120000);
+        }
+
         private void IncreaseCounter(double increase)
         {
             _counter += increase;
+        }
+
+        private void IncreaseTime(int increase)
+        {
+            _time = _time.AddMilliseconds(increase);
         }
     }
 }
