@@ -10,13 +10,13 @@ namespace MqttSubscriber.NET.Database
     {
         public void InsertTemperatureReadingToDatabase(Message message)
         {
-            string table = "Temperature";
+            string table = "TemperatureProduction";
             InsertMessageIntoDatabase(table, message);
         }
 
         public void InsertElectricityReadingToDatabase(Message message)
         {
-            string table = "Electricity";
+            string table = "ElectricityProduction";
             InsertMessageIntoDatabase(table, message);
         }
 
@@ -27,6 +27,7 @@ namespace MqttSubscriber.NET.Database
 
             var cells = new Cell[]
             {
+                new Cell("LT"),
                 new Cell(message.SerialNo),
                 new Cell(message.DeviceName),
                 new Cell(message.Timestamp),
@@ -40,6 +41,7 @@ namespace MqttSubscriber.NET.Database
 
             var columns = new Column[]
             {
+                new Column("Country",     ColumnType.Varchar),
                 new Column("SerialNo",    ColumnType.Varchar),
                 new Column("DeviceName",  ColumnType.Varchar),
                 new Column("Time",        ColumnType.Timestamp),
