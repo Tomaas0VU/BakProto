@@ -19,11 +19,11 @@ namespace DataReplicator
             string connectionStringMongo = "mongodb://192.168.1.105:27017";
 
             string pasteDBLocation = "mongo";
-            DateTime startDate = new DateTime(2020, 5, 15);
+            DateTime startDate = new DateTime(2010, 1, 1);
             TimeSpan startTime = new TimeSpan(0,0,0);
-            TimeSpan duration = new TimeSpan(8, 0, 0);
+            TimeSpan duration = new TimeSpan(168, 0, 0);
 
-            int howManyDaysBack = -4;
+            int howManyDaysBack = -7;
 
             // CODE
 

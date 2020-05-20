@@ -19,6 +19,8 @@ namespace DataReplicator.DatabaseOut
 
         private async Task InsertMessagesIntoDatabase(string table, List<Message> messages)
         {
+            //TODO: Privaloma paskirstyti po 100, pagal dokumentacija
+
             IRiakEndPoint cluster = RiakCluster.FromConfig("riakConfig");
             IRiakClient client = cluster.CreateClient();
 
