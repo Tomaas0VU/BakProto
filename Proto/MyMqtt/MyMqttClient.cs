@@ -6,7 +6,7 @@ namespace MyMqtt
 {
     public class MyMqttClient
     {
-        const string _mqttHostname = "localhost";
+        const string _mqttHostname = "192.168.1.105";
 
         private IMqttClient _mqttClient;
 
