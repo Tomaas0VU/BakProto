@@ -7,7 +7,7 @@ namespace MqttSubscriber.NET
 {
     class Program
     {
-        static string _hostname = "localhost";
+        static string _hostname = "127.0.0.1";
 
         static void Main(string[] args)
         {

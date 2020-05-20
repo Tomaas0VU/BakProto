@@ -6,7 +6,7 @@ namespace MqttSubscriber.NET.Database
 {
     public class MongoDBClient : IDatabase
     {
-        private const string connectionString = "mongodb://127.0.0.1:27017";
+        private const string connectionString = "mongodb://192.168.1.105:27017";
 
         public void InsertTemperatureReadingToDatabase(Message message)
         {
