@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Interfaces\IDatabase.cs" />
+    <Compile Include="Database\MongoDB.cs" />
     <Compile Include="Database\RiakTS.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Program.cs" />

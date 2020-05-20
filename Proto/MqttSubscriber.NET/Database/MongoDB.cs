@@ -12,7 +12,7 @@ namespace MqttSubscriber.NET.Database
         {
             var client = new MongoClient(connectionString);
             var db = client.GetDatabase("Bakalaurinis");
-            var collection = db.GetCollection<Message>("Temperature");
+            var collection = db.GetCollection<Message>("TemperatureProduction");
             collection.InsertOne(message);
         }
 
@@ -20,7 +20,7 @@ namespace MqttSubscriber.NET.Database
         {
             var client = new MongoClient(connectionString);
             var db = client.GetDatabase("Bakalaurinis");
-            var collection = db.GetCollection<Message>("Electricity");
+            var collection = db.GetCollection<Message>("ElectricityProduction");
             collection.InsertOne(message);
         }
     }
