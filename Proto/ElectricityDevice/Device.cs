@@ -58,6 +58,7 @@ namespace ElectricityDevice
 
                 await _mqttClient.PublishAsync(_devicePublishTopic, mesToSend);
             }
+            Console.WriteLine(_serialNo + " done.");
         }
 
         private double GenerateElectricityIncrease()
