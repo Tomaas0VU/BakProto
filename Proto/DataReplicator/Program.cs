@@ -23,7 +23,7 @@ namespace DataReplicator
             TimeSpan startTime = new TimeSpan(0,0,0);
             TimeSpan duration = new TimeSpan(168, 0, 0);
 
-            int howManyDaysBack = -7;
+            int howManyDaysBack = 0;
 
             // CODE
 
@@ -45,7 +45,7 @@ namespace DataReplicator
                 dataOut = new RiakOut();
             }
 
-            dataOut.InsertData("Temperature", list).Wait();
+            dataOut.InsertData("Temp", list).Wait();
         }
 
         private static List<Message> TransformData(List<MessageFromMongo> data, int howManyDaysBack)

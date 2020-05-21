@@ -33,6 +33,7 @@ namespace DataReplicator.DatabaseOut
                 {
                     var cells = new Cell[]
                     {
+                new Cell("LT"),
                 new Cell(message.SerialNo),
                 new Cell(message.DeviceName),
                 new Cell(message.Timestamp),
@@ -43,6 +44,7 @@ namespace DataReplicator.DatabaseOut
 
                 var columns = new Column[]
                 {
+                new Column("Country",     ColumnType.Varchar),
                 new Column("SerialNo",    ColumnType.Varchar),
                 new Column("DeviceName",  ColumnType.Varchar),
                 new Column("Time",        ColumnType.Timestamp),

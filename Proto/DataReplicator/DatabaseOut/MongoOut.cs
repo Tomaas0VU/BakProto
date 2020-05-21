@@ -28,7 +28,7 @@ namespace DataReplicator.DatabaseOut
                 });
             }
             var client = new MongoClient(_connectionString);
-            var db = client.GetDatabase("Bakalaurinis");
+            var db = client.GetDatabase("BakalaurasProd");
             var collection = db.GetCollection<Message>(collectionName);
             await collection.InsertManyAsync(list);
         }
