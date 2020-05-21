@@ -21,9 +21,9 @@ namespace DataReplicator
             string pasteDBLocation = "mongo";
             DateTime startDate = new DateTime(2010, 1, 1);
             TimeSpan startTime = new TimeSpan(0,0,0);
-            TimeSpan duration = new TimeSpan(168, 0, 0);
+            TimeSpan duration = new TimeSpan(2400, 0, 0);
 
-            int howManyDaysBack = 0;
+            int howManyDaysBack = -100;
 
             // CODE
 
@@ -31,7 +31,7 @@ namespace DataReplicator
             DateTime to = from.AddTicks(duration.Ticks);
 
             ICanRead mongoIn = new MongoIn(connectionStringMongo);
-            var data = mongoIn.GetData("Temperature", from, to).Result;
+            var data = mongoIn.GetData("Temp", from, to).Result;
 
             var list = TransformData(data, howManyDaysBack);
             

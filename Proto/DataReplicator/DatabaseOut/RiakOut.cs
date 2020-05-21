@@ -24,8 +24,8 @@ namespace DataReplicator.DatabaseOut
 
             while (allMessages.Count() > 0)
             {
-                List<Message> messages = allMessages.Take(100).ToList();
-                allMessages.RemoveRange(0, 100);
+                List<Message> messages = allMessages.Take(80).ToList();
+                allMessages.RemoveRange(0, messages.Count());
 
                 var rows = new List<Row>();
 

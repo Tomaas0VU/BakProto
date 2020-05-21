@@ -17,7 +17,7 @@ namespace DataReplicator.DatabaseIn
         public async Task<List<MessageFromMongo>> GetData(string collectionName, DateTime from, DateTime to)
         {
             var client = new MongoClient(_connectionString);
-            var db = client.GetDatabase("Bakalaurinis");
+            var db = client.GetDatabase("BakalaurasProd");
             var collection = db.GetCollection<MessageFromMongo>(collectionName);
             var result = await collection.Find(Builders<MessageFromMongo>.Filter.And(
                 Builders<MessageFromMongo>.Filter.Gte("Timestamp", from),
